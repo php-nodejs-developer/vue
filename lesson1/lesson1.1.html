@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+<!-- участок html, в котором будет работать vue приложение -->
+<div id="application">
+    <input type="text" v-model="userInput">
+    <!-- вывод значения свойств из data -->
+    <!-- интерполяция текста: значения свойств или валидное js выражение -->
+    <p>1. {{ userInput }}</p>
+    <p>2. {{ userInput.length < 1 ? "Вы ничего не ввели" : userInput }}</p>
+    <!-- для сложной логики, включающей реактивные свойства, правильно использовать
+       вычисляемые свойства -->
+    <p>3. {{ userOutput }}</p>
+
+     <!-- интерполяция html -->
+     <p v-html="userHtmlOutput"></p>
+
+    <article>
+        <h3>{{ book.title.toUpperCase() }}</h3>
+        <p>Автор: {{ book.author }}</p>
+        <ol>
+<!--            <li>{{ book.otherAuthors[0] }}</li>-->
+<!--            <li>{{ book.otherAuthors[1] }}</li>-->
+            <li v-for="author in book.otherAuthors">
+                {{ author }}
+            </li>
+        </ol>
+        <!--  значения свойств не используются  -->
+        <img src="book.img" alt="book.title">
+        <!--    привязка атрибутов    -->
+        <img v-bind:src="book.img" v-bind:alt="book.title">
+        <!--  привязка атрибутов (сокращенная запись) -->
+        <img :src="book.img" :alt="book.title">
+    </article>
+
+</div>
+
+
+<script src="js/lesson1.1.js"></script>
+</body>
+</html>
+
+
+
+
