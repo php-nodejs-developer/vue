@@ -34,7 +34,32 @@ let books =  [
 Vue.createApp({
     data(){
         return {
-
+            tabTitles: ["Все книги", "Мой список"],
+            currentTab: "Все книги",
+            userList: [],
+            books
+            /* allBooks: books */
+        }
+    },
+    // для вывода отфильтрованных или отсортированных данных
+    // используются вычисляемые свойства
+    computed: {
+        sortedByTitle(){
+            // геттер для свойства sortedByTitle, который возвращает
+            // значение этого свойства:
+            return this.userList.sort(
+                (b1, b2) => b1.title.localeCompare(b2.title)
+            );
+        }
+    },
+    methods: { // обработчики событий, можно хранить и вспомогательные методы
+        addToList(book){
+            book.inList = true;
+            this.userList.push(book);
+        },
+        deleteFromList(book){
+            book.inList = false;
+            this.userList = this.books.filter(b => b.inList);
         }
     }
 }).mount("#app");

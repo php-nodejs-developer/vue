@@ -7,8 +7,60 @@
     <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
+<!-- v-bind:class / :class -->
+<!-- { имя-класса-1: условие, при котором класс будет добавлен,
+       имя-класса-2: условие, при котором класс будет добавлен } -->
 
-<div id="app"></div>
+<!-- v-on:имясобытия="действия"  -->
+<!-- @имясобытия="действия"  -->
+
+<div id="app" class="container">
+    <span class="tab"
+          :class="{ active: title === currentTab }"
+          v-for="title in tabTitles"
+          v-on:click="currentTab = title">
+        {{ title.toUpperCase() }}
+    </span>
+
+    <!-- условная отрисовка v-if (v-else-if ... v-else) / v-show -->
+    <section v-if="currentTab === 'Все книги'">
+        <div v-for="book in books">
+            <h2>{{ book.title }}</h2>
+            <div class="book__info">
+                <span class="book__description">{{ book.description }}</span>
+                <img class="book__image" :src="`images/${book.cover}`">
+            </div>
+            <button class="book__button"
+                    @click="book.inList ? deleteFromList(book) : addToList(book)">
+                {{ book.inList ? 'Удалить из списка' : 'Добавить в список' }}
+            </button>
+
+            <!--
+            <button class="book__button" v-if="book.inList">Удалить из списка</button>
+            <button class="book__button" v-else>Добавить в список</button>
+            -->
+
+        </div>
+    </section>
+
+    <section v-show="currentTab === 'Мой список'">
+       <!-- если список пуст, вывести Вы не добавили ни одно книги -->
+        <h2 v-if="!sortedByTitle.length">
+            Вы не добавили ни одной книги
+        </h2>
+        <div v-else>
+            <h2>Мой список</h2>
+            <div class="user-list__book" v-for="book in sortedByTitle">
+                <h2 class="user-list__title">{{ book.title }}</h2>
+                <button class="book__button" @click="deleteFromList(book)">
+                    Удалить из списка
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+</div>
 
 <script src="js/lesson2.js"></script>
 </body>

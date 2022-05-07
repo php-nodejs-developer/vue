@@ -1,4 +1,24 @@
 "use strict";
+let cats = [
+    {
+        name: "Люся",
+        age: "1 год",
+        color: "трехцветная",
+        img: "https://picsum.photos/id/219/1000/1000"
+    },
+    {
+        name: "Макс",
+        age: 4,
+        color: "серый",
+        img: "https://picsum.photos/id/1074/1000/1000"
+    },
+    {
+        name: "Василий",
+        age: 1,
+        color: "трехцветный",
+        img: "https://picsum.photos/id/593/1000/1000"
+    }
+];
 // 1. параметры инициализации компонента,
 // объявления свойств, за значениями которых будет следить
 // система реактивности vue, методы - обработчики событий и тд
@@ -14,7 +34,8 @@ let rootComponentOption = {
                 author: "js developer",
                 otherAuthors: ["junior1", "junior2"],
                 img: "https://picsum.photos/id/44/200/300"
-            }
+            },
+            cats
         }
     },
     computed: { /* вычисляемые свойства */

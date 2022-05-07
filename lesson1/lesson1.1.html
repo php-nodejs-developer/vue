@@ -39,6 +39,17 @@
         <img :src="book.img" :alt="book.title">
     </article>
 
+
+    <article v-for="cat in cats">
+        <h3>{{ cat.name }}</h3>
+        <div>
+            <span>{{ cat.age }}</span>
+            <span>{{ cat.color }}</span>
+        </div>
+        <img :src="cat.img" :alt="cat.name">
+        <a href="#">Подробнее</a>
+    </article>
+
 </div>
 
 
