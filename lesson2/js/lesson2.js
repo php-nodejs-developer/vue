@@ -30,3 +30,11 @@ let books =  [
         inList: false,
     },
 ];
+
+Vue.createApp({
+    data(){
+        return {
+
+        }
+    }
+}).mount("#app");
