@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<section id="app">
+    <form>
+        <h2>Заявка на выбор яхты</h2>
+        <fieldset>
+            <legend>Контактная информация</legend>
+            <div> <!-- v-model:свойство-из-data -->
+                <label for="name">Введите имя: </label>
+                <input type="text" id="name" name="user">
+            </div>
+
+            <div>
+                <label for="email">Введите email: </label>
+                <input type="email" id="email" name="email">
+            </div>
+
+            <div>
+                <label for="phone">Введите телефон: </label>
+                <input type="text" id="phone" name="phone">
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Информация для подбора яхты</legend>
+            <div>
+                <label for="companies">Укажите производителя: </label>
+                <select id="companies" name="company" multiple>
+                    <option>companiesList</option>
+                </select>
+            </div>
+
+            <div>
+                <label>
+                    Максимальная цена (евро):
+                    <input type="number" name="price">
+                </label>
+            </div>
+            <div>
+                <label>
+                    Максимальное количество палуб:
+                    <input type="number" name="deck-count">
+                </label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Дополнительная информация</legend>
+            <div>
+                <div><label for="comment">Комментарий к заявке</label></div>
+                <textarea name="comment" id="comment"></textarea>
+            </div>
+
+            <div>
+                <p>Как с Вами можно связаться?</p>
+                <div>
+                    <label>
+                        <input value="call" type="checkbox" name="contacts[]">
+                        Звонок
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input value="sms" type="checkbox" name="contacts[]">
+                        СМС
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input value="email" type="checkbox" name="contacts[]">
+                        E-mail
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+
+        <div>
+            <label>
+                Согласие на обработку персональных данных:
+                <input type="checkbox" name="agree">
+            </label>
+        </div>
+
+        <!-- кнопка должна быть заблокирована, если пользователь не согласился на обработку персональных данных -->
+        <!-- элемент заблокирован: disabled, disabled="true" элемент не заблокирован: нет атрибута, disabled="false" -->
+        <input type="submit" value="Подобрать">
+    </form>
+
+</section>
+
+
+</body>
+</html>
