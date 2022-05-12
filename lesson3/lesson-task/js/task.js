@@ -6,5 +6,6 @@ Vue.createApp({
             letters: "абвгдеёжзийклмнопрстуфхцчшщъыьэюя",
             text: ""
         }
+        // удаление последнего символа slice
     }
 }).mount("#lesson-task");

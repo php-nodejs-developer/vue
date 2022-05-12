@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+<body>
+
+<section id="lesson-task">
+    <span v-for="letter in letters"
+        @click="text += letter">
+        {{ letter }}
+    </span>
+
+    <span @click="text += ' '">-</span>
+    <span @click="text = text.slice(0, -1)">del</span>
+
+    <p>Вывод: {{ text }}</p>
+</section>
+
+<script src="js/task.js"></script>
+</body>
+</html>
