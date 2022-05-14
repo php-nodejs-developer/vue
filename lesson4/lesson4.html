@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Компоненты</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+<section id="lesson4">
+    <!-- использование компонента -->
+    <item-card :info="service" background="yellow"></item-card>
+
+    <item-card v-for="book in books" :info="book" background="gray"></item-card>
+
+    <v-buttons></v-buttons>
+                   <!--showPrise-->
+    <outer-button v-on:show-prise="show"></outer-button>
+    <p>{{ currentPrise }}</p>
+
+
+    <v-ads></v-ads>
+
+    <v-ads>
+        <p>Открыт набор на...</p>
+    </v-ads>
+
+</section>
+
+<script src="js/lesson4.js"></script>
+</body>
+</html>

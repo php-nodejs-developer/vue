@@ -88,20 +88,21 @@ render-функция, то шаблон будет проигнорирован
 3. Расширенная настройка
    
       
-      props: {
-         title: {
-            type: String,
-            require: false,
-            default: ""
-         },
-         articles: {
-            type: Array,
-            require: true,
-            validator(value) {
-               return value.length > 0;
-            }
-         },
-      }
+
+         props: {
+            title: {
+               type: String,
+               require: false,
+               default: ""
+            },
+            articles: {
+               type: Array,
+               require: true,
+               validator(value) {
+                  return value.length > 0;
+               }
+            },
+         }
 
 
 
