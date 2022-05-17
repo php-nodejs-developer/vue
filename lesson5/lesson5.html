@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vue-router@4"></script>
+</head>
+<body>
+<!-- vue 3 использует vue-router 4 -->
+<!-- vue 2 использует vue-router 3 -->
+<div id="app">
+    <nav class="menu">
+        <!-- по умолчанию в верстке будет отображен, как тег 'a' -->
+        <!-- <a href="/">Главная</a> -->
+        <router-link to="/">Главная</router-link>
+        <router-link to="/courses">Курсы</router-link>
+        <router-link to="/contacts">Контакты</router-link>
+    </nav>
+
+    <router-view></router-view>
+</div>
+
+<script src="js/lesson5.js"></script>
+</body>
+</html>
