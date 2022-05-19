@@ -14,9 +14,13 @@
     <nav class="menu">
         <!-- по умолчанию в верстке будет отображен, как тег 'a' -->
         <!-- <a href="/">Главная</a> -->
-        <router-link to="/">Главная</router-link>
+<!--        <router-link to="/">Главная</router-link>
         <router-link to="/courses">Курсы</router-link>
-        <router-link to="/contacts">Контакты</router-link>
+        <router-link to="/contacts">Контакты</router-link>-->
+
+        <router-link :to="{name: 'main'}">Главная</router-link>
+        <router-link :to="{name: 'all courses'}">Курсы</router-link>
+        <router-link :to="{name: 'contacts'}">Контакты</router-link>
     </nav>
 
     <router-view></router-view>

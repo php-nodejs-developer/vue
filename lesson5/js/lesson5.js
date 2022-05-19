@@ -11,12 +11,15 @@ const coursesPage = {
                 <div v-for="course in courses">
                     <h3>{{ course.title }}</h3>
                     <!-- маршрут с параметрами -->
-                    <router-link :to="'/course/' + course.id">
+                  <!-- <router-link :to="'/course/' + course.id">
                       Подробнее
-                    </router-link>
+                      </router-link>-->
+                  <router-link :to="{name: 'course by id', params: {id: course.id}}">
+                    Подробнее
+                  </router-link>
                 </div>
-            </div>
-        `,
+         </div>
+`,
     data(){
         return {
             courses: [
@@ -71,20 +74,26 @@ const app = Vue.createApp({});
 const routes = [
     { // маршурт: связь между одной ссылкой и одним компонентом
         path: "/", // ссылка
-        component: mainPage // компонент, который должен быть подгружен
+        component: mainPage, // компонент, который должен быть подгружен
         // при переходе по ссылке из path
+        alias: ["/home", "/main"],
+        // имена маршрутов дб быть уникальными
+        name: "main"
     },
     {
         path: "/courses",
-        component: coursesPage
+        component: coursesPage,
+        name: "all courses"
     },
     {
         path: "/contacts",
-        component: contactsPage
+        component: contactsPage,
+        name: "contacts"
     },
     { // маршрут с параметрами, динамические маршруты
         path: "/course/:id(\\d+)",
         component: oneCourse,
+        name: "course by id",
         // вложенные маршруты
         children: [
             // значение атрибута to в router-link  /course/1/reviews
@@ -109,7 +118,27 @@ const router = VueRouter.createRouter({
     routes
 });
 
+router.beforeEach((to, from) => {
+    // to, from - объекты маршрута с полной информацией об этом
+    // маршруте, включая парамерты, имя
+    // to - объект маршрута, к которому осуществляется переход
+    console.log(to.name, from)
+    // если функция вернет false, переход к to не будет выполнен
+    // если функция вернет true, переход к to будет выполнен
+    return true
+})
+
+/* router.beforeEach((to, from, next) => {
+    // next - функция перехода, если не принимает
+    // на вход аргументов, то переход к to маршруту,
+    // если принимает, то к маршруту с указанным name, например, next({ name: 'Login' })
+    if (условие) next({ name: 'Login' })
+    else next()
+}) */
+
 // 3. связь маршрутизатора и vue
 app.use(router); // до вызова метода mount
 
 app.mount("#app");
+
+
