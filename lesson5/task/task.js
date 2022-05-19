@@ -51,7 +51,9 @@ const item = {
             currentItem: null
         }
     },
-    created(){
+    created(){ // метод вызывается при создании компонента,
+        // в методе есть доступ к data свойствам, но
+        // нет доступа к html элементам
         this.currentItem = // получение currentItem по id
         // из массива items
     }
